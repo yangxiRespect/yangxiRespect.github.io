@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="RocketMQ,docker,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="yangxiRespect">
-<meta property="og:url" content="http://yangxirespect.newplan.top/index.html">
+<meta name="description" content="使用docker搭建RocketMQ环境记录如何使用docker-compose启动RocketMQ环境.">
+<meta name="keywords" content="RocketMQ,docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用docker搭建RocketMQ环境">
+<meta property="og:url" content="http://yangxirespect.newplan.top/2019/09/17/RocketMq-docker搭建/index.html">
 <meta property="og:site_name" content="yangxiRespect">
+<meta property="og:description" content="使用docker搭建RocketMQ环境记录如何使用docker-compose启动RocketMQ环境.">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-17T12:49:26.117Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yangxiRespect">
+<meta name="twitter:title" content="使用docker搭建RocketMQ环境">
+<meta name="twitter:description" content="使用docker搭建RocketMQ环境记录如何使用docker-compose启动RocketMQ环境.">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yangxirespect.newplan.top/">
+  <link rel="canonical" href="http://yangxirespect.newplan.top/2019/09/17/RocketMq-docker搭建/">
 
 
 
 
 
-  <title>yangxiRespect</title>
+  <title>使用docker搭建RocketMQ环境 | yangxiRespect</title>
   
 
 
@@ -150,8 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,9 +248,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -276,9 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/17/RocketMq-docker搭建/" itemprop="url">使用docker搭建RocketMQ环境</a></h1>
+          <h1 class="post-title" itemprop="name headline">使用docker搭建RocketMQ环境</h1>
         
 
         <div class="post-meta">
@@ -350,16 +352,22 @@
       
 
       
-        
-          <h1 id="使用docker搭建RocketMQ环境"><a href="#使用docker搭建RocketMQ环境" class="headerlink" title="使用docker搭建RocketMQ环境"></a>使用docker搭建RocketMQ环境</h1><p>记录如何使用docker-compose启动RocketMQ环境.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/17/RocketMq-docker搭建/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <h1 id="使用docker搭建RocketMQ环境"><a href="#使用docker搭建RocketMQ环境" class="headerlink" title="使用docker搭建RocketMQ环境"></a>使用docker搭建RocketMQ环境</h1><p>记录如何使用docker-compose启动RocketMQ环境.</p>
+<a id="more"></a>
+<h2 id="2m-noslave"><a href="#2m-noslave" class="headerlink" title="2m-noslave"></a>2m-noslave</h2><ol>
+<li>编写docker-compose.yml文件，使用的镜像是rocketMQ官方的镜像，版本号为4.4.0，也可以依照<a href="https://github.com/foxiswho/docker-rocketmq" target="_blank" rel="noopener">官方文档</a>编译自己的镜像。</li>
+</ol>
+<figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">'2'</span></span><br><span class="line">services:</span><br><span class="line">  <span class="comment">#Service for nameserver</span></span><br><span class="line">  namesrv1:</span><br><span class="line">    image: rocketmqinc/rocketmq:<span class="number">4.4</span>.<span class="number">0</span></span><br><span class="line">    container_name: rmqnamesrv</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">9876</span>:<span class="number">9876</span></span><br><span class="line">    volumes:</span><br><span class="line">      - ./data/namesrv/logs:/home/rocketmq/logs</span><br><span class="line">    command: sh mqnamesrv</span><br><span class="line"></span><br><span class="line">  <span class="comment">#Service for broker</span></span><br><span class="line">  broker:</span><br><span class="line">    image: rocketmqinc/rocketmq:<span class="number">4.4</span>.<span class="number">0</span></span><br><span class="line">    container_name: rmqbroker-a-m</span><br><span class="line">    links:</span><br><span class="line">      - namesrv</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">10909</span>:<span class="number">10909</span></span><br><span class="line">      - <span class="number">10911</span>:<span class="number">10911</span></span><br><span class="line">      - <span class="number">10912</span>:<span class="number">10912</span></span><br><span class="line">    environment:</span><br><span class="line">      - NAMESRV_ADDR=namesrv:<span class="number">9876</span></span><br><span class="line">    volumes:</span><br><span class="line">      - ./data/broker/logs:/home/rocketmq/logs</span><br><span class="line">      - ./data/broker/store:/home/rocketmq/store</span><br><span class="line">      - ./data/broker/conf/broker.conf:/opt/rocketmq-<span class="number">4.4</span>.<span class="number">0</span>/conf/broker.conf</span><br><span class="line">    command: sh mqbroker -c ../conf/broker.conf</span><br><span class="line"></span><br><span class="line">  <span class="comment">#Service for another broker -- broker1</span></span><br><span class="line">  broker1:</span><br><span class="line">    image: rocketmqinc/rocketmq:<span class="number">4.4</span>.<span class="number">0</span></span><br><span class="line">    container_name: rmqbroker-b-m</span><br><span class="line">    links:</span><br><span class="line">      - namesrv</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">10929</span>:<span class="number">10909</span></span><br><span class="line">      - <span class="number">10931</span>:<span class="number">10911</span></span><br><span class="line">      - <span class="number">10932</span>:<span class="number">10912</span></span><br><span class="line">    environment:</span><br><span class="line">      - NAMESRV_ADDR=namesrv:<span class="number">9876</span></span><br><span class="line">    volumes:</span><br><span class="line">      - ./data1/broker/logs:/home/rocketmq/logs</span><br><span class="line">      - ./data1/broker/store:/home/rocketmq/store</span><br><span class="line">      - ./data1/broker/conf/broker.conf:/opt/rocketmq-<span class="number">4.4</span>.<span class="number">0</span>/conf/broker.conf</span><br><span class="line">    command: sh mqbroker -c ../conf/broker.conf</span><br><span class="line"></span><br><span class="line">  <span class="comment"># Service for rmqconsole</span></span><br><span class="line">  rmqconsole:</span><br><span class="line">    image: styletang/rocketmq-console-ng</span><br><span class="line">    container_name: rmqconsole</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">8180</span>:<span class="number">8080</span></span><br><span class="line">    environment:</span><br><span class="line">        JAVA_OPTS: <span class="string">"-Drocketmq.namesrv.addr=namesrv:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用 docker-compose up 启动对应服务。</li>
+</ol>
+<p>需要注意的是2个broker的配置文件，具体的设置可参照官方项目中的例子。如果想要broker能被docker容器外的项目访问到，需要修改broker.conf中的<br><code>brokerIP1=宿主机IP</code></p>
+<ol start="3">
+<li>其他需要注意的</li>
+</ol>
+<p>项目中大部分配置都取自RocketMQ官方文档，有部分配置需要参照个人使用情况具体设置。</p>
+
       
     </div>
     
@@ -374,160 +382,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxirespect.newplan.top/2019/09/14/Java源码阅读----ArrayList/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangxi">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/a.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yangxiRespect">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/14/Java源码阅读----ArrayList/" itemprop="url">Java源码阅读----ArrayList</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-14T11:55:41+08:00">
-                2019-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/源码/" itemprop="url" rel="index">
-                    <span itemprop="name">源码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/RocketMQ/" rel="tag"># RocketMQ</a>
           
-
+            <a href="/tags/docker/" rel="tag"># docker</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <h1 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h1><p>ArrayList是jdk中提供的列表的数组实现，ArrayList不支持并发操作。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/14/Java源码阅读----ArrayList/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/14/Java源码阅读----ArrayList/" rel="next" title="Java源码阅读----ArrayList">
+                <i class="fa fa-chevron-left"></i> Java源码阅读----ArrayList
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -537,10 +423,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -548,6 +435,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -568,8 +459,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -647,6 +547,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用docker搭建RocketMQ环境"><span class="nav-number">1.</span> <span class="nav-text">使用docker搭建RocketMQ环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2m-noslave"><span class="nav-number">1.1.</span> <span class="nav-text">2m-noslave</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -787,6 +703,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
